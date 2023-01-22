@@ -1,0 +1,5 @@
+#denoising
+CUDA_VISIBLE_DEVICES=4 python3 main_test_dncnn_denoising_b.py
+
+#deblocking
+CUDA_VISIBLE_DEVICES=4 python3 main_test_dncnn3_deblocking_b.py

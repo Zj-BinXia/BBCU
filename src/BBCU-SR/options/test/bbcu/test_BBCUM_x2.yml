@@ -1,0 +1,81 @@
+name: Test_BBCUM_x2
+model_type: SRModel
+scale: 2
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+datasets:
+  test_1:  # the 1st test dataset
+    name: Set5
+    type: PairedImageDataset
+    dataroot_gt: /root/datasets/benchmark/Set5/HR
+    dataroot_lq: /root/datasets/benchmark/Set5/LR_bicubic/X2
+    filename_tmpl: '{}x2'
+    io_backend:
+      type: disk
+
+  test_2:  # the 2nd test dataset
+    name: Set14
+    type: PairedImageDataset
+    dataroot_gt: /root/datasets/benchmark/Set14/HR
+    dataroot_lq: /root/datasets/benchmark/Set14/LR_bicubic/X2
+    filename_tmpl: '{}x2'
+    io_backend:
+      type: disk
+  
+  test_3:  # the 3nd test dataset
+    name: B100
+    type: PairedImageDataset
+    dataroot_gt: /root/datasets/benchmark/B100/HR
+    dataroot_lq: /root/datasets/benchmark/B100/LR_bicubic/X2
+    filename_tmpl: '{}x2'
+    io_backend:
+      type: disk  
+
+  test_4:  # the 4nd test dataset
+    name: Urban100
+    type: PairedImageDataset
+    dataroot_gt: /root/datasets/benchmark/Urban100/HR
+    dataroot_lq: /root/datasets/benchmark/Urban100/LR_bicubic/X2
+    filename_tmpl: '{}x2'
+    io_backend:
+      type: disk 
+
+  test_5:  # the 3nd test dataset
+    name: MANGA109
+    type: PairedImageDataset
+    dataroot_gt: /root/datasets/benchmark/MANGA109/HR
+    dataroot_lq: /root/datasets/benchmark/MANGA109/LR_bicubic/X2
+    filename_tmpl: '{}x2'
+    io_backend:
+      type: disk 
+
+# network structures
+network_g:
+  type: BBCUM
+  num_in_ch: 3
+  num_out_ch: 3
+  num_feat: 64
+  num_block: 16
+  upscale: 2
+  img_range: 130.
+
+# path
+path:
+  pretrain_network_g: ./experiments/BBCUMx2.pth
+  strict_load_g: true
+
+# validation settings
+val:
+  save_img: true
+  suffix: ~  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 2
+      test_y_channel: true
+    ssim:
+      type: calculate_ssim
+      crop_border: 2
+      test_y_channel: true
