@@ -78,9 +78,11 @@ CUDA_VISIBLE_DEVICES=4 python3 bbcu/test.py -opt options/test/bbcu/test_BBCUM_x4
 ---
 ## Results
 <p align="center">
-  <img src="images/quan.jpg" width="90%">
+  <img src="figs/quan-SR.jpg" width="90%">
 </p>
-
+<p align="center">
+  <img src="figs/qual-SR.jpg" width="90%">
+</p>
 
 ---
 
