@@ -64,7 +64,16 @@ Please download checkpoints from [Google Drive](https://drive.google.com/drive/f
 ---
 ## Testing
 ```bash
-python3  kdsrgan/test.py -opt options/test_kdsrgan_x4ST.yml 
+#x2
+CUDA_VISIBLE_DEVICES=4 python3 bbcu/test.py -opt options/test/bbcu/test_BBCUL_x2.yml
+
+CUDA_VISIBLE_DEVICES=4 python3 bbcu/test.py -opt options/test/bbcu/test_BBCUM_x2.yml
+
+#x4
+
+CUDA_VISIBLE_DEVICES=4 python3 bbcu/test.py -opt options/test/bbcu/test_BBCUL_x4.yml
+
+CUDA_VISIBLE_DEVICES=4 python3 bbcu/test.py -opt options/test/bbcu/test_BBCUM_x4.yml
 ```
 ---
 ## Results
@@ -76,9 +85,8 @@ python3  kdsrgan/test.py -opt options/test_kdsrgan_x4ST.yml
 ---
 
 ## BibTeX
-
-    @InProceedings{xia2022knowledge,
-      title={Knowledge Distillation based Degradation Estimation for Blind Super-Resolution},
+    @InProceedings{xia2022basic,
+      title={Basic Binary Convolution Unit for Binarized Image Restoration Network},
       author={Xia, Bin and Zhang, Yulun and Wang, Yitong and Tian, Yapeng and Yang, Wenming and Timofte, Radu and Van Gool, Luc},
       journal={ICLR},
       year={2023}
