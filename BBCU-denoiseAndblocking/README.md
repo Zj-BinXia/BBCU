@@ -57,7 +57,7 @@ CUDA_VISIBLE_DEVICES=4 python3 main_test_dncnn3_deblocking_b.py
   <img src="figs/quan-denoise.jpg" width="90%">
 </p>
 <p align="center">
-  <img src="figs/quan-deblocking" width="90%">
+  <img src="figs/quan-deblocking.jpg" width="90%">
 </p>
 
 ---
