@@ -32,7 +32,7 @@ We train our network with  [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/) (8
 CUDA_VISIBLE_DEVICES=0 python3 main_train_dncnn_denoising_b.py -opt ./options/train_cdncnn_denoising_b.json
 
 #deblocking
-#CUDA_VISIBLE_DEVICES=0 python3 main_train_dncnn3_deblocking_b.py -opt ./options/train_dncnn3_deblocking_b.json 
+CUDA_VISIBLE_DEVICES=0 python3 main_train_dncnn3_deblocking_b.py -opt ./options/train_dncnn3_deblocking_b.json 
 ```
 
 
@@ -45,24 +45,19 @@ Please download checkpoints from [Google Drive](https://drive.google.com/drive/f
 ---
 ## Testing
 ```bash
-#x2
-CUDA_VISIBLE_DEVICES=4 python3 bbcu/test.py -opt options/test/bbcu/test_BBCUL_x2.yml
+#denoising
+CUDA_VISIBLE_DEVICES=4 python3 main_test_dncnn_denoising_b.py
 
-CUDA_VISIBLE_DEVICES=4 python3 bbcu/test.py -opt options/test/bbcu/test_BBCUM_x2.yml
-
-#x4
-
-CUDA_VISIBLE_DEVICES=4 python3 bbcu/test.py -opt options/test/bbcu/test_BBCUL_x4.yml
-
-CUDA_VISIBLE_DEVICES=4 python3 bbcu/test.py -opt options/test/bbcu/test_BBCUM_x4.yml
+#deblocking
+CUDA_VISIBLE_DEVICES=4 python3 main_test_dncnn3_deblocking_b.py
 ```
 ---
 ## Results
 <p align="center">
-  <img src="figs/quan-SR.jpg" width="90%">
+  <img src="figs/quan-denoise.jpg" width="90%">
 </p>
 <p align="center">
-  <img src="figs/qual-SR.jpg" width="90%">
+  <img src="figs/quan-deblocking" width="90%">
 </p>
 
 ---
