@@ -16,52 +16,50 @@ This is code for BBCU-SR (for super-resolution)
 - Python >= 3.8 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html))
 - [PyTorch >= 1.10](https://pytorch.org/)
 
-### Installation
-
-Install dependent packages
-
-
-    pip install basicsr 
-    pip install -r requirements.txt
-    pip install pandas 
-    sudo python3 setup.py develop
-
-
----
 
 ## Dataset Preparation
 
-We use the same training datasets as [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN) (DF2K+OST).
+We train our network with  [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/) (800 images).
 
 ---
 
-## Training (8 V100 GPUs)
+## Training (1 V100 GPUs)
 
-1. We train KDSRNet_T (only using L1 loss)
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python3 -m torch.distributed.launch --nproc_per_node=8 --master_port=3309 kdsrgan/train.py -opt options/train_kdsrnet_x4TA.yml --launcher pytorch 
-```
-
-2. we train KDSRNet_S (only using L1 loss and KD loss). **It is notable that modify the ''pretrain_network_TA'' and ''pretrain_network_g'' of options/train_kdsrnet_x4ST.yml to the path of trained KDSRNet_T checkpoint.** Then, we run
+Train x4 SR BBCUL
 
 ```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
-python3  -m torch.distributed.launch --nproc_per_node=8 --master_port=4349 kdsrgan/train.py -opt options/train_kdsrnet_x4ST.yml --launcher pytorch 
+
+CUDA_VISIBLE_DEVICES=3 bash ./scripts/dist_train.sh 1 ./options/train/bbcu/train_BBCUL_x4.yml --auto_resume
 ```
 
-3. we train KDSRGAN_S ( using L1 loss, perceptual loss, adversial loss and KD loss). **It is notable that modify the ''pretrain_network_TA'' and ''pretrain_network_g'' of options/train_kdsrnet_x4ST.yml to the path of trained KDSRNet_T and KDSRNet_S checkpoint, respectively.** Then, we run
+Train x2 SR BBCUL
 
 ```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
-python3 -m torch.distributed.launch --nproc_per_node=8 --master_port=4397 kdsrgan/train.py -opt options/train_kdsrgan_x4ST.yml --launcher pytorch 
+
+CUDA_VISIBLE_DEVICES=4 bash ./scripts/dist_train.sh 1 ./options/train/bbcu/train_BBCUL_x2.yml --auto_resume
 ```
+
+Train x4 SR BBCUM
+
+```bash
+
+CUDA_VISIBLE_DEVICES=3 bash ./scripts/dist_train.sh 1 ./options/train/bbcu/train_BBCUM_x4.yml --auto_resume
+```
+
+Train x2 SR BBCUM
+
+```bash
+
+CUDA_VISIBLE_DEVICES=4 bash ./scripts/dist_train.sh 1 ./options/train/bbcu/train_BBCUM_x2.yml --auto_resume
+```
+
+
 
 ---
 
 ## :european_castle: Model Zoo
 
-Please download checkpoints from [Google Drive](https://drive.google.com/drive/folders/1QlOz4F9Mtp9DFXoaHYbnMnRSonR9YFJA).
+Please download checkpoints from [Google Drive](https://drive.google.com/drive/folders/1MRZejm6JqnQKRXnLCxZmryRCatWnk31g).
 
 ---
 ## Testing
