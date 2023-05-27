@@ -25,10 +25,10 @@ class BBCUM(nn.Module):
         upscale (int): Upsampling factor. Support x2, x3 and x4. Default: 4.
     """
 
-    def __init__(self, num_in_ch=3, num_out_ch=3, num_feat=64, num_block=16, upscale=4,img_range=1.):
+    def __init__(self, num_in_ch=3, num_out_ch=3, num_feat=64, num_block=16, upscale=4,k=1.):
         super(BBCUM, self).__init__()
         self.upscale = upscale
-        self.img_range = img_range
+        self.k = k
         self.conv_first = nn.Conv2d(num_in_ch, num_feat, 3, 1, 1)
         self.body = make_layer(BinaryBlock, num_block, conv=BinaryConv2d,
                     n_feats=num_feat,
@@ -55,7 +55,7 @@ class BBCUM(nn.Module):
             default_init_weights(self.upconv2, 0.1)
 
     def forward(self, x):
-        x = x * self.img_range
+        x = x * self.k
         feat = self.lrelu(self.conv_first(x))
         out = self.body(feat)
 
@@ -68,5 +68,5 @@ class BBCUM(nn.Module):
         out = self.conv_last(self.lrelu(self.conv_hr(out)))
         base = F.interpolate(x, scale_factor=self.upscale, mode='bilinear', align_corners=False)
         out += base
-        out = out / self.img_range
+        out = out / self.k
         return out
