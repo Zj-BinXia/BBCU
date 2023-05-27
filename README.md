@@ -37,7 +37,8 @@ We provide [Pretrained Models](https://drive.google.com/drive/folders/1MRZejm6Jq
     ```bash
     cd BBCU-denoiseAndblocking
     ```
-**It is notable that our amplification factor k for residual alignment is used to balance teh value range gap of full-precision residual branch and binarized Conv branch as input image range is 0-1. The best k∗ is related to the number of feature channels n, which empirically fits k∗ = 130n/64. You can adjust it according to your network setting.
+**It is notable that our amplification factor k for residual alignment is used to balance teh value range gap of full-precision residual branch and binarized Conv branch as input image range is 0-1. The best k∗ is related to the number of feature channels n, which empirically fits k∗ = 130n/64. You can adjust it according to your network setting.**
+
 **More details please see the README in folder of BBCU-SR and BBCU-denoiseAndblocking** 
 
 ---
