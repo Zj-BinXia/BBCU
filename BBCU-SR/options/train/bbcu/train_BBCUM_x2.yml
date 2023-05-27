@@ -59,7 +59,7 @@ network_g:
   num_feat: 64
   num_block: 16
   upscale: 2
-  img_range: 130.
+  k: 130.
 
 # path
 path:
