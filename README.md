@@ -4,7 +4,7 @@ This project is the official implementation of 'Basic Binary Convolution Unit fo
 > **Basic Binary Convolution Unit for Binarized Image Restoration Network [[Paper](https://arxiv.org/pdf/2210.00405.pdf)] [[Project](https://github.com/Zj-BinXia/BBCU)]**
 
 
-We provide [Pretrained Models](https://drive.google.com/drive/folders/1MRZejm6JqnQKRXnLCxZmryRCatWnk31g?usp=sharing)] for super-resolution, denoising, and deblocking.
+We provide [Pretrained Models](https://drive.google.com/drive/folders/1MRZejm6JqnQKRXnLCxZmryRCatWnk31g?usp=sharing) for super-resolution, denoising, and deblocking.
 
 <p align="center">
   <img src="figs/method.jpg" width="50%">
