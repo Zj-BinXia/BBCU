@@ -1,13 +1,11 @@
-# BBCU
-
-This project is the official implementation of 'Basic Binary Convolution Unit for Binarized Image Restoration Network', ICLR2023
-> **Basic Binary Convolution Unit for Binarized Image Restoration Network [[Paper](https://arxiv.org/pdf/2210.00405.pdf)] [[Project](https://github.com/Zj-BinXia/BBCU)]**
+# Basic Binary Convolution Unit for Binarized Image Restoration Network （ICLR2023）
 
 
-We provide [Pretrained Models](https://drive.google.com/drive/folders/1MRZejm6JqnQKRXnLCxZmryRCatWnk31g?usp=sharing) for super-resolution, denoising, and deblocking.
+ [Paper](https://arxiv.org/pdf/2210.00405.pdf) | [Project](https://github.com/Zj-BinXia/BBCU) | [pretrained models](https://drive.google.com/drive/folders/1MRZejm6JqnQKRXnLCxZmryRCatWnk31g?usp=sharing)
+
 
 <p align="center">
-  <img src="figs/method.jpg" width="50%">
+  <img src="figs/method.jpg" width="80%">
 </p>
 
 ---
